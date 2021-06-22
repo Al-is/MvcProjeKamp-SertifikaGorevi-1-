@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımızda Veri Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Hakkımızda</th>
+        <th>Aktif/Pasif</th>
+    </tr>
+    @foreach (var about in Model)
+    {
+        string status = "";
+        string statusColor = "";
+        string statusName = "";
+        string statusClass = "";
+
+        switch (about.AboutStatus)
+        {
+            case true:
+                statusColor = "badge badge-success";
+                status = "Aktif";
+                statusName = "Pasif Yap";
+                statusClass = "btn btn-danger btn-sm";
+                break;
+            case false:
+                statusColor = "badge badge-danger";
+                status = "Pasif";
+                statusName = "Aktif Yap";
+                statusClass = "btn btn-success btn-sm";
+                break;
+        }
+        <tr>
+            <td>@about.AboutId</td>
+            <td>@about.AboutDetails1</td>
+            <td>
+                <a class="@statusClass" href="/About/DeleteAbout/@about.AboutId">
+                    @statusName
+                </a>
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+@Html.Action("AboutPartialView", "About")

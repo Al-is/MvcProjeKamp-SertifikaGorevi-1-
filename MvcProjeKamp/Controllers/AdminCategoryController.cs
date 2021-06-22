@@ -14,8 +14,9 @@ namespace MvcProjeKamp.Controllers
     public class AdminCategoryController : Controller
     {
         // GET: AdminCategory
-
         private CategoryManager CategoryManager = new CategoryManager(new EfCategoryDal());
+
+        [Authorize(Roles = "B")]
         public ActionResult Index()
         {
             var categoryValues = CategoryManager.GetList();
@@ -50,7 +51,7 @@ namespace MvcProjeKamp.Controllers
 
             return View();
         }
-        
+
         public ActionResult DeleteCategory(int id)
         {
             var categoryValue = CategoryManager.GetById(id);
@@ -62,7 +63,7 @@ namespace MvcProjeKamp.Controllers
         public ActionResult EditCategory(int id)
         {
             var categoryValue = CategoryManager.GetById(id);
-           return View(categoryValue);
+            return View(categoryValue);
         }
 
         [HttpPost]

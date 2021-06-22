@@ -17,8 +17,6 @@ namespace BusinessLayer.ValidationRules.FluentValidation
             RuleFor(x => x.CategoryName).MaximumLength(20).WithMessage("Kategori adı en fazla 20 karakter olabilir");
             RuleFor(x => x.CategoryDescription).NotEmpty().WithMessage("Açıklama boş olamaz");
 
-
-
         }
     }
 }
