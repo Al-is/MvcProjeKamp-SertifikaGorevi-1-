@@ -1,0 +1,155 @@
+﻿@using EntityLayer.Concrete
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Heading>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "AllHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h2>Başlıklar</h2>
+
+@{ string color = "";}
+
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+    <br />
+    <section class="content">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Başlık İşlemleri</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Başlık Adı
+                            </th>
+                            <th style="width: 15%">
+                                Oluşturan Yazar
+                            </th>
+                            <th style="width: 10%">
+                                Durumu
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 25%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var heading in Model)
+                        {
+                            if (heading.Category.CategoryName == "Tiyatro")
+                            {
+                                color = "badge badge-warning";
+                            }
+                            else if (heading.Category.CategoryName == "Film")
+                            {
+                                color = "badge badge-success";
+                            }
+                            else if (heading.Category.CategoryName == "Yazılım")
+                            {
+                                color = "badge badge-info";
+                            }
+                            else if (heading.Category.CategoryName == "Kitap")
+                            {
+                                color = "badge badge-danger";
+                            }
+                            else if (heading.Category.CategoryName == "Seyahat")
+                            {
+                                color = "badge badge-secondary";
+                            }
+                            else
+                            {
+                                color = "badge badge-dark";
+                            }
+
+                            string status = "";
+                            string statusColor = "";
+
+
+                            switch (heading.HeadingStatus)
+                            {
+                                case true:
+                                    statusColor = "badge badge-success";
+                                    status = "Aktif";
+
+                                    break;
+                                case false:
+                                    statusColor = "badge badge-danger";
+                                    status = "Pasif";
+
+                                    break;
+                            }
+                            <tr>
+                                <td>
+                                    @heading.HeadingId
+                                </td>
+                                <td>
+                                    <a>
+                                        @heading.HeadingName
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @(((DateTime)heading.HeadingDate).ToString("dd-MMM-yyyy"))
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@heading.Writer.WriterImage">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <span class="@statusColor">@status</span>
+                                </td>
+                                <td class="project-state">
+                                    <span class="@color">@heading.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/Default/Headings/@heading.HeadingId">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Yazılar
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/WriterPanelContent/AddContent/@heading.HeadingId">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Bu Başlığa yaz
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("AllHeading", new { page }))

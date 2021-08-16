@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.EntityFramework;
@@ -15,17 +16,18 @@ namespace MvcProjeKamp.Controllers
     {
         // GET: Message
 
+
         private MessageManager messageManager = new MessageManager(new EfMessageDal());
         private MessageValidator messageValidator = new MessageValidator();
-        public ActionResult Inbox()
+        public ActionResult Inbox(string p)
         {
-            var messageList = messageManager.GetListInbox();
+            var messageList = messageManager.GetListInbox(p);
             return View(messageList);
         }
 
-        public ActionResult Sendbox()
+        public ActionResult Sendbox(string p)
         {
-            var messageList = messageManager.GetListSendbox();
+            var messageList = messageManager.GetListSendbox(p);
             return View(messageList);
         }
         public ActionResult GetInboxMessageDetails(int id)
@@ -67,16 +69,34 @@ namespace MvcProjeKamp.Controllers
             return View();
 
         }
+        [HttpPost]
         public ActionResult AddDraft(Message message)
         {
+            message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString().ToString());
             messageManager.AddDraft(message);
-            return View();
+            return RedirectToAction("Inbox");
         }
 
-        public ActionResult ReadMessage(Message message)
+        public ActionResult ReadMessage(int id)
         {
+            var message = messageManager.GetById(id);
             messageManager.ReadStatus(message);
-            return View();
+            return RedirectToAction("ListUnReadMessage");
+        }
+        public ActionResult ListReadMessage()
+        {
+            var message = messageManager.ReadList();
+            return View(message);
+        }
+        public ActionResult ListUnReadMessage()
+        {
+            var message = messageManager.UnReadList();
+            return View(message);
+        }
+        public ActionResult ListDraft()
+        {
+            var message = messageManager.DraftList();
+            return View(message);
         }
     }
 }

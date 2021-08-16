@@ -132,6 +132,22 @@
     <Compile Include="Migrations\202106221946003_mig_add_skill_class.designer.cs">
       <DependentUpon>202106221946003_mig_add_skill_class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107021611108_add_admin_class_update.cs" />
+    <Compile Include="Migrations\202107021611108_add_admin_class_update.designer.cs">
+      <DependentUpon>202107021611108_add_admin_class_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108160821247_about_entity_update.cs" />
+    <Compile Include="Migrations\202108160821247_about_entity_update.designer.cs">
+      <DependentUpon>202108160821247_about_entity_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108160836118_about_entity_update2.cs" />
+    <Compile Include="Migrations\202108160836118_about_entity_update2.designer.cs">
+      <DependentUpon>202108160836118_about_entity_update2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108160905414_imagePath_entity_update.cs" />
+    <Compile Include="Migrations\202108160905414_imagePath_entity_update.designer.cs">
+      <DependentUpon>202108160905414_imagePath_entity_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,6 +203,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106221946003_mig_add_skill_class.resx">
       <DependentUpon>202106221946003_mig_add_skill_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107021611108_add_admin_class_update.resx">
+      <DependentUpon>202107021611108_add_admin_class_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108160821247_about_entity_update.resx">
+      <DependentUpon>202108160821247_about_entity_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108160836118_about_entity_update2.resx">
+      <DependentUpon>202108160836118_about_entity_update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108160905414_imagePath_entity_update.resx">
+      <DependentUpon>202108160905414_imagePath_entity_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

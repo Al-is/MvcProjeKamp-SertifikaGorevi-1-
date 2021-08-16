@@ -14,10 +14,16 @@ namespace MvcProjeKamp.Controllers
         // GET: Heading
 
         private HeadingManager headingManager = new HeadingManager(new EfHeadingDal());
-        private CategoryManager CategoryManager = new CategoryManager(new EfCategoryDal());
-        private WriterManager WriterManager = new WriterManager(new EfWriterDal());
+        private CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+        private WriterManager writerManager = new WriterManager(new EfWriterDal());
 
         public ActionResult Index()
+        {
+            var headingValues = headingManager.GetList();
+            return View(headingValues);
+        }
+
+        public ActionResult HeadingReport()
         {
             var headingValues = headingManager.GetList();
             return View(headingValues);
@@ -26,7 +32,7 @@ namespace MvcProjeKamp.Controllers
         [HttpGet]
         public ActionResult AddHeading()
         {
-            List<SelectListItem> valueCategory = (from x in CategoryManager.GetList()
+            List<SelectListItem> valueCategory = (from x in categoryManager.GetList()
                                                   select new SelectListItem
                                                   {
                                                       Text = x.CategoryName,
@@ -34,7 +40,7 @@ namespace MvcProjeKamp.Controllers
                                                   }).ToList();
             ViewBag.vlc = valueCategory;
 
-            List<SelectListItem> valueWriter = (from x in WriterManager.GetList()
+            List<SelectListItem> valueWriter = (from x in writerManager.GetList()
                                                 select new SelectListItem
                                                 {
                                                     Text = x.WriterName + " " + x.WriterSurName,
@@ -55,7 +61,7 @@ namespace MvcProjeKamp.Controllers
         [HttpGet]
         public ActionResult EditHeading(int id)
         {
-            List<SelectListItem> valueCategory = (from x in CategoryManager.GetList()
+            List<SelectListItem> valueCategory = (from x in categoryManager.GetList()
                                                   select new SelectListItem
                                                   {
                                                       Text = x.CategoryName,

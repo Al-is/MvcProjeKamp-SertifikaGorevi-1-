@@ -9,6 +9,8 @@ using EntityLayer.Concrete;
 
 namespace MvcProjeKamp.Controllers
 {
+    //Line, cloumn grafikleri 1.mimariye uygun
+    //Authorizatio 'de EditAdminde ki roller dropdownList olsun
     public class AboutController : Controller
     {
         // GET: About

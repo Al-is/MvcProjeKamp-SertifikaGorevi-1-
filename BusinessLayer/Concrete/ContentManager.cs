@@ -17,9 +17,17 @@ namespace BusinessLayer.Concrete
         {
             _contentDal = contentDal;
         }
-        public List<Content> GetList()
+
+        public List<Content> GetList(string content)
         {
-            return _contentDal.List();
+            if (string.IsNullOrEmpty(content))
+            {
+                return _contentDal.List();
+            }
+            else
+            {
+                return _contentDal.List(x => x.ContentValue.Contains(content));
+            }
         }
 
         public void ContentAdd(Content content)
@@ -45,6 +53,11 @@ namespace BusinessLayer.Concrete
         public List<Content> GetListByHeadingId(int id)
         {
             return _contentDal.List(x => x.HeadingId == id);
+        }
+
+        public List<Content> GetListByWriter(int id)
+        {
+            return _contentDal.List(x => x.WriterId == id);
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.Admin
+
+@{
+    ViewBag.Title = "AddAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<br />
+<h1>Yeni Admin Ekleme</h1>
+<br />
+
+@using (Html.BeginForm("AddAdmin", "Authorization", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Admin Kullanıcı Adı")
+        @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.CategoryName)*@
+        <br />
+
+        @Html.Label("Şifreyi Giriniz")
+        @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.CategoryDescription)*@
+        <br />
+
+        @Html.Label("Rolü Seçiniz")
+        @Html.TextBoxFor(x => x.AdminRole, new { @class = "form-control" })
+        <br />
+        <button id="btn1" class="btn btn-success">Kaydet</button>
+    </div>
+}
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kaydınız Başarılı Bir Şekilde Eklendi!", "success");
+    });
+</script>
+
+

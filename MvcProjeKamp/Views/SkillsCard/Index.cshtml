@@ -42,6 +42,8 @@
     <div class="main">
         <h1>Yetenek Profili</h1>
         <div class="main-info w3l">
+            <a class="btn btn-info" href="/SkillsCard/AddSkills">Skill Add</a>
+            <hr />
             <div class="main-row">
                 <!-- main-row-one -->
                 <div class="profile-grid logo wthree">
@@ -51,10 +53,12 @@
 
                 </div>
                 <h3 class="title">Yetenekler</h3>
-                <div class="col-md-6 skills-right bar_group">
+                <div class="col-md-15 skills-right bar_group">
                     @foreach (var skill in Model)
                     {
-                        <div class='bar_group__bar thin' label='@skill.SkillName &nbsp;&nbsp; @skill.Range%' value='@skill.Range'></div>
+                        <div class='bar_group__bar thin' label='@skill.SkillName @skill.Range%' value='@skill.Range'>
+                        </div>
+                        <a class="btn btn-success" href="/SkillsCard/EditSkill/@skill.SkillId">Edit</a>
                     }
                 </div>
                 <!--bar-js-->
@@ -70,12 +74,9 @@
                 <div class="clear"> </div>
             </div>
         </div>
-        <!-- copyright -->
         <div class="copyright">
-            <p> © 2016 Skills Profile Widget . All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts.</a></p>
+            <p> © 2021 Skills Profile Widget . All rights reserved | Design by <a href="https://modernyazilim.com/" target="_blank">Modern Yazılım.</a></p>
         </div>
-        <!-- //copyright -->
     </div>
-    <!-- main -->
 </body>
 </html>

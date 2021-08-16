@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AdminLTE 3 | Dashboard 3</title>
+    <title>Mvc Blog Proje</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
     <!-- IonIcons -->
@@ -30,7 +30,7 @@
             <a href="index3.html" class="brand-link">
                 <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">MVC PROJE KAMPI</span>
             </a>
 
             <!-- Sidebar -->
@@ -41,7 +41,10 @@
                         <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        @if (User.IsInRole("A"))
+                        {
+                            <a href="#" class="d-block">Ali Can CUCU</a>
+                        }
                     </div>
                 </div>
 
@@ -50,7 +53,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        @if (User.IsInRole("B"))
+                        @if (User.IsInRole("A"))
                         {
                             <li class="nav-item has-treeview">
                                 <a href="/AdminCategory/Index/" class="nav-link">
@@ -67,6 +70,14 @@
                                 <p>
                                     Başlıklar
                                     @*<span class="right badge badge-danger">New</span>*@
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Content/GetAllContent/" class="nav-link">
+                                <i class="nav-icon fas fa-book-reader"></i>
+                                <p>
+                                    Yazılar
                                 </p>
                             </a>
                         </li>
@@ -88,7 +99,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="/Chart/Index/" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Pie Chart</p>
                                     </a>
@@ -112,7 +123,14 @@
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
                                     Hakkımızda
-
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="/Heading/HeadingReport/" class="nav-link">
+                                <i class="nav-icon fas fa-bars"></i>
+                                <p>
+                                    Raporlar
                                 </p>
                             </a>
                         </li>
@@ -128,7 +146,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="pages/calendar.html" class="nav-link">
+                            <a href="/Authorization/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-calendar-alt"></i>
                                 <p>
                                     Yetkilendirmeler
@@ -143,6 +161,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/Test/SweetAlert/" class="nav-link">
+                                <i class="nav-icon far fa-window-restore"></i>
+                                <p>
+                                    Sweet Alert
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="/ErrorPages/Page404/" class="nav-link">
                                 <i class="nav-icon far fa-envelope"></i>
@@ -152,7 +178,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/Home/HomePage/" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Siteye Git
@@ -160,7 +186,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/Login/LogOut/" class="nav-link">
                                 <i class="nav-icon far fa-plus-square"></i>
                                 <p>
                                     Çıkış Yap
@@ -180,7 +206,7 @@
     </div>
 
     <!-- jQuery -->
-    @*<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE -->
@@ -189,5 +215,14 @@
     <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.7.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.7.0/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
 </body>
 </html>

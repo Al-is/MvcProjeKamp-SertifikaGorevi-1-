@@ -79,8 +79,11 @@
                                                     <label for="check1"></label>
                                                 </div>
                                             </td>
-                                            <td class="mailbox-star"><a href="/Message/ReadMessage/@message.MessageId"><i class="fas fa-star text-warning"></i></a></td>
+                                           
+                                            <td class="mailbox-name"><a href="/Message/ReadMessage/@message.MessageId"><i class="fas fa-star text-warning"> okundu işaretle</i></a></td>
+
                                             <td class="mailbox-name"><a href="/Message/GetInboxMessageDetails/@message.MessageId">@message.SenderMail</a></td>
+
                                             <td class="mailbox-subject">
                                                 <b>@message.Subject</b>
                                                 @if (message.MessageContent.Length < 35)

@@ -32,9 +32,9 @@ namespace DataAccessLayer.Concrete.Repositories
             return _object.SingleOrDefault(filter);
         }
 
-        public void Insert(T p)
+        public void Insert(T entity)
         {
-            var addedEntity = context.Entry(p);
+            var addedEntity = context.Entry(entity);
             addedEntity.State = EntityState.Added;
             // _object.Add(p);
             context.SaveChanges();
@@ -50,9 +50,9 @@ namespace DataAccessLayer.Concrete.Repositories
             return _object.Where(filter).ToList();
         }
 
-        public void Update(T p)
+        public void Update(T entity)
         {
-            var uptatedEntity = context.Entry(p);
+            var uptatedEntity = context.Entry(entity);
             uptatedEntity.State = EntityState.Modified;
             context.SaveChanges();
         }

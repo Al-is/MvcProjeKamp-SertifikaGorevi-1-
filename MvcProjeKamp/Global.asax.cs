@@ -12,6 +12,8 @@ namespace MvcProjeKamp
     {
         protected void Application_Start()
         {
+            //Bütün sayfalar için login isteyen kod
+           // GlobalFilters.Filters.Add(new AuthorizeAttribute());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

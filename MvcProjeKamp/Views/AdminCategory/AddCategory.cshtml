@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
 <br />
 <h1>Yeni Kategori Ekleme</h1>
 <br />
@@ -22,9 +24,11 @@
         @Html.ValidationMessageFor(x => x.CategoryDescription)
         <br />
         <br />
-        @*@Html.Label("Başlık")
-            @Html.TextBoxFor(x => x.Headings)
-             @Html.ValidationMessageFor(x=>x.CategoryName)*@
-        <button class="btn btn-success">Kaydet</button>
+        <button id="btn1" class="btn btn-success">Kaydet</button>
     </div>
 }
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kaydınız Başarılı Bir Şekilde Eklendi!", "success");
+    });
+</script>

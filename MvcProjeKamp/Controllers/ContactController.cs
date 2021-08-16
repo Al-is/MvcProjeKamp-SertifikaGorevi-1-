@@ -29,12 +29,12 @@ namespace MvcProjeKamp.Controllers
             return View(contactValues);
         }
 
-        public PartialViewResult MessageListMenu()
+        public PartialViewResult MessageListMenu(string adminMail)
         {
-            var sendValue = messageManager.GetListSendbox().Count();
+            var sendValue = messageManager.GetListSendbox(adminMail).Count();
             ViewBag.sendValue = sendValue;
 
-            var receiverValue = messageManager.GetListInbox().Count();
+            var receiverValue = messageManager.GetListInbox(adminMail).Count();
             ViewBag.receiverValue = receiverValue;
 
             var draftValue = messageManager.DraftList().Count();
@@ -43,7 +43,7 @@ namespace MvcProjeKamp.Controllers
             var unReadValue = messageManager.UnReadList().Count();
             ViewBag.unReadValue = unReadValue;
 
-            var readValue = messageManager.ReadtList().Count();
+            var readValue = messageManager.ReadList().Count();
             ViewBag.readValue = readValue;
 
             return PartialView();

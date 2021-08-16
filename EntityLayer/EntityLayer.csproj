@@ -61,12 +61,14 @@
     <Compile Include="Concrete\Message.cs" />
     <Compile Include="Concrete\Skill.cs" />
     <Compile Include="Concrete\Writer.cs" />
+    <Compile Include="Dto\ContentCalendarDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

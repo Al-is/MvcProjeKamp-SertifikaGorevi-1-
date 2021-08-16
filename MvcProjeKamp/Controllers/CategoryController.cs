@@ -13,7 +13,7 @@ namespace MvcProjeKamp.Controllers
 {
     public class CategoryController : Controller
     {
-        private CategoryManager cm = new CategoryManager(new EfCategoryDal());
+        private CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
         // GET: Category
         public ActionResult Index()
         {
@@ -22,7 +22,7 @@ namespace MvcProjeKamp.Controllers
 
         public ActionResult GetCategoryList()
         {
-            var categoryValues = cm.GetList();
+            var categoryValues = categoryManager.GetList();
             return View(categoryValues);
 
         }
@@ -41,7 +41,7 @@ namespace MvcProjeKamp.Controllers
             ValidationResult result = categoryValidator.Validate(category);
             if (result.IsValid)
             {
-                cm.CategoryAdd(category);
+                categoryManager.CategoryAdd(category);
                 return RedirectToAction("GetCategoryList");
             }
             else

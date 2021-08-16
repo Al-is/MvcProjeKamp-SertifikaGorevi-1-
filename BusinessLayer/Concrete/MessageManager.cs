@@ -23,14 +23,14 @@ namespace BusinessLayer.Concrete
             return _messageDal.Get(x => x.MessageId == id);
         }
 
-        public List<Message> GetListInbox()
+        public List<Message> GetListInbox(string adminMail)
         {
-            return _messageDal.List(x => x.ReceiverMail == "admin@gmail.com");
+            return _messageDal.List(x => x.ReceiverMail == adminMail);
         }
 
-        public List<Message> GetListSendbox()
+        public List<Message> GetListSendbox(string adminMail)
         {
-            return _messageDal.List(x => x.SenderMail == "admin@gmail.com");
+            return _messageDal.List(x => x.SenderMail == adminMail);
         }
 
         public void MessageAdd(Message message)
@@ -49,7 +49,7 @@ namespace BusinessLayer.Concrete
             {
                 message.Draft = true;
             }
-            _messageDal.Update(message);
+            _messageDal.Insert(message);
         }
         public List<Message> DraftList()
         {
@@ -63,7 +63,7 @@ namespace BusinessLayer.Concrete
             }
             _messageDal.Update(message);
         }
-        public List<Message> ReadtList()
+        public List<Message> ReadList()
         {
             return _messageDal.List(x => x.Read == true);
         }
@@ -73,3 +73,4 @@ namespace BusinessLayer.Concrete
         }
     }
 }
+

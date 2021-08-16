@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concrete.Skill
+
+@{
+    ViewBag.Title = "AddSkills";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<h1>Yeni Kategori Ekleme</h1>
+<br />
+
+@using (Html.BeginForm("AddSkills", "SkillsCard", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Skill Adı")
+        @Html.TextBoxFor(x => x.SkillName, new { @class = "form-control", @placeholder = "Skill Adı" })
+        <br />
+        <br />
+        @Html.Label("Range")
+        @Html.TextBoxFor(x => x.Range, new { @class = "form-control", @placeholder = "Range" })
+        <br />
+        <br />
+        <button class="btn btn-success">Kaydet</button>
+    </div>
+}
+
